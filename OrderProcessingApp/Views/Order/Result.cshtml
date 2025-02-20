@@ -1,0 +1,34 @@
+﻿@model OrderProcessingApp.Models.Order
+
+@{
+    ViewData["Title"] = "Order Results";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Item</th>
+            <th>Value</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th>Order Amount</th>
+            <td>@Model.Amount</td>
+        </tr>
+        <tr>
+            <th>Customer Type</th>
+            <td>@Model.CustomerType</td>
+        </tr>
+        <tr>
+            <th>Discount Applied</th>
+            <td>@Model.Discount</td>
+        </tr>
+        <tr>
+            <th>Final Amount</th>
+            <td>@Model.FinalAmount</td>
+        </tr>
+    </tbody>
+</table>
