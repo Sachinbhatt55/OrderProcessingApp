@@ -3,10 +3,10 @@ name: .NET Core CI/CD
 on:
   push:
     branches:
-      - master  # Trigger the pipeline when pushing to the 'main' branch.
+      - master  # Trigger the pipeline when pushing to the 'master' branch.
   pull_request:
     branches:
-      - master  # Trigger on pull requests targeting the 'main' branch.
+      - master  # Trigger on pull requests targeting the 'master' branch.
 
 jobs:
   build:
@@ -16,13 +16,13 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2  # This step checks out the code from your GitHub repository.
 
-    - name: Install libssl
-      run: sudo apt-get install -y libssl1.0-dev  # This installs the necessary libssl version.
+    - name: Install libssl3
+      run: sudo apt-get update && sudo apt-get install -y libssl3  # Install libssl3 for .NET 8 compatibility.
 
-    - name: Set up .NET Core
-      uses: actions/setup-dotnet@v1
+    - name: Set up .NET 8
+      uses: actions/setup-dotnet@v2  # This is for .NET Core 8.
       with:
-        dotnet-version: '5.0'  # Specify the .NET version you're using. Change if needed.
+        dotnet-version: '8.0'  # Specify the .NET 8 version you're using.
 
     - name: Restore dependencies
       run: dotnet restore  # Restores project dependencies.
