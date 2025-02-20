@@ -3,11 +3,10 @@ name: .NET Core CI/CD
 on:
   push:
     branches:
-      - master  # Trigger the pipeline when pushing to the 'master' branch.
+      - master  # Trigger the pipeline when pushing to the 'main' branch.
   pull_request:
     branches:
-      - master  # Trigger on pull requests targeting the 'master' branch.
-  workflow_dispatch:  # This allows you to trigger the workflow manually
+      - master  # Trigger on pull requests targeting the 'main' branch.
 
 jobs:
   build:
@@ -16,6 +15,9 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v2  # This step checks out the code from your GitHub repository.
+
+    - name: Install libssl
+      run: sudo apt-get install -y libssl1.0-dev  # This installs the necessary libssl version.
 
     - name: Set up .NET Core
       uses: actions/setup-dotnet@v1
