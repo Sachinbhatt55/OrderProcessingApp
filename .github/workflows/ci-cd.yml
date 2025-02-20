@@ -3,10 +3,11 @@ name: .NET Core CI/CD
 on:
   push:
     branches:
-      - main  # Trigger the pipeline when pushing to the 'main' branch.
+      - master  # Trigger the pipeline when pushing to the 'master' branch.
   pull_request:
     branches:
-      - main  # Trigger on pull requests targeting the 'main' branch.
+      - master  # Trigger on pull requests targeting the 'master' branch.
+  workflow_dispatch:  # This allows you to trigger the workflow manually
 
 jobs:
   build:
@@ -17,7 +18,7 @@ jobs:
       uses: actions/checkout@v2  # This step checks out the code from your GitHub repository.
 
     - name: Set up .NET Core
-      uses: actions/setup-dotnet@v1m
+      uses: actions/setup-dotnet@v1
       with:
         dotnet-version: '5.0'  # Specify the .NET version you're using. Change if needed.
 
